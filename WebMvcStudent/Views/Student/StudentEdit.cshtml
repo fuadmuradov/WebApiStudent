@@ -1,0 +1,24 @@
+﻿@model StudentPostDto
+@{
+    ViewData["Title"] = "StudentEdit";
+}
+
+<h1>StudentEdit</h1>
+
+<div class="container">
+    <div class="row">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Category Name</label>
+                <input asp-for="FullName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Category Name</label>
+                <input asp-for="GroupId" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
