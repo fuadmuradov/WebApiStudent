@@ -1,6 +1,18 @@
-﻿@{
-    ViewData["Title"] = "Privacy Policy";
-}
-<h1>@ViewData["Title"]</h1>
-
-<p>Use this page to detail your site's privacy policy.</p>
+﻿@model FilePostDto
+<div class="card center-block mb-5" style="width:50rem;">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label asp-for="Files" class="font-weight-600"></label>
+                    <input class="form-control" asp-for="Files"><br />
+                    <span asp-validation-for="Files"></span>
+                </div>
+                
+               
+            </div>
+            <button type="submit" class="btn btn-success ml-4">Add new File</button>
+        </form>
+    </div>
+</div>

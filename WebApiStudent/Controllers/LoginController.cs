@@ -19,10 +19,12 @@ namespace WebApiStudent.Controllers
     public class LoginController : ControllerBase
     {
         private IConfiguration _config;
+       private readonly HttpContext _httpContext;
 
-        public LoginController(IConfiguration config)
+        public LoginController(IConfiguration config, HttpContext httpContext)
         {
             _config = config;
+          _httpContext = httpContext;
         }
 
         [AllowAnonymous]
@@ -34,6 +36,8 @@ namespace WebApiStudent.Controllers
             if (user != null)
             {
                 var token = Generate(user);
+               
+             
                 return Ok(token);
             }
 
@@ -59,8 +63,10 @@ namespace WebApiStudent.Controllers
               claims,
               expires: DateTime.Now.AddMinutes(15),
               signingCredentials: credentials);
-
-            return new JwtSecurityTokenHandler().WriteToken(token);
+            var token2 = new JwtSecurityTokenHandler().WriteToken(token);
+            _httpContext.Response.Cookies.Append("token", token2);
+            
+            return token2;
         }
 
         private UserModel Authenticate(UserLogin userLogin)

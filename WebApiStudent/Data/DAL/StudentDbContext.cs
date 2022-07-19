@@ -17,6 +17,7 @@ namespace WebApiStudent.Data.DAL
 
         public DbSet<Student> Students { get; set; }
         public DbSet<Group> Groups { get; set; }
+        public DbSet<Sfile> Sfiles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
